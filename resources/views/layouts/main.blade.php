@@ -293,7 +293,7 @@
                             <span> User </span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="icons-material.html">User</a></li>
+                            <li><a href="{{ route('users.index') }}">User</a></li>
                             <li><a href="icons-ion.html">Role</a></li>
                             <li><a href="icons-fontawesome.html">Permission</a></li>
                         </ul>
@@ -311,9 +311,7 @@
     <div class="main-content">
         <div class="page-content">
             <div class="container-fluid">
-                <!-- end row -->
-                <div class="row">
-                </div>
+                    @yield('content')
                 <!-- end row -->
 
             </div>
@@ -339,7 +337,7 @@
 <!-- END layout-wrapper -->
 
 <!-- Right Sidebar -->
-<div class="right-bar">
+{{-- <div class="right-bar">
     <div data-simplebar class="h-100">
         <div class="rightbar-title px-3 py-4">
             <a href="javascript:void(0);" class="right-bar-toggle float-end">
@@ -379,7 +377,7 @@
 
         </div>
 
-    </div>
+    </div> --}}
     <!-- end slimscroll-menu-->
 </div>
 <!-- /Right-bar -->
