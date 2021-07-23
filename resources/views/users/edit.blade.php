@@ -3,6 +3,9 @@
 @section('content')
 <div class="row">
     <div class="card">
+    <div class="card-header">
+            <a href="{{ route('users.index') }}" class="float-end">Back</a>
+        </div>
         <div class="card-body">
     
             <h4 class="card-title">Validation type</h4>
