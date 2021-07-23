@@ -4,6 +4,13 @@
 <div class="row">
     <div class="card">
         <div class="card-header">
+            <div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
+            </div>
             <a href="{{ route('users.create') }}" class="float-end">Create User</a>
         </div>
         <div class="card-body">
@@ -25,7 +32,9 @@
                             <th scope="row">{{ $user->id}}</th>
                             <td>{{ $user->username }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>edit/delete</td>
+                            <td>
+                                <a href="{{route('users.edit', $user->id)}}" class="btn btn-success">Edit</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
