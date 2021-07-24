@@ -11,7 +11,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <form method="GET" action="{{ route('users.index') }}">
+            <form method="GET" action="{{ route('countries.index') }}">
             <div class="float-start">
                 <div class="input-group">
                     <input type="search" name="search" class="form-control rounded" 
@@ -22,7 +22,7 @@
             </form>
             </div>
                 <div class="float-end">
-                <a href="{{ route('users.create') }}">Create User</a>
+                <a href="{{ route('countries.create') }}">Create Country</a>
             </div>
         </div>
         <div class="card-body">
@@ -33,21 +33,21 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Username</th>
-                            <th>Email</th>
+                            <th>Country Code</th>
+                            <th>Name</th>
                             <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
-                        <tr>
-                            <th scope="row">{{ $user->id}}</th>
-                            <td>{{ $user->username }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>
-                                <a href="{{route('users.edit', $user->id)}}" class="btn btn-success">Edit</a>
-                            </td>
-                        </tr>
+                        @foreach ($countries as $country)
+                            <tr>
+                                <th scope="row">{{ $country->id }}</th>
+                                <td>{{ $country->country_code }}</td>
+                                <td>{{ $country->name }}</td>
+                                <td>
+                                    <a href="{{ route('countries.edit', $country->id) }}" class="btn btn-success">Edit</a>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
