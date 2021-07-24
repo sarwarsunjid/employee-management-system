@@ -96,7 +96,13 @@
                         </div>
                     </div>
                 </form>
-    
+        </div>
+        <div class="m-2 p-2">
+            <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger">Delete {{ $user->username }}</button>
+            </form>
         </div>
     </div>
     </div>

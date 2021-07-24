@@ -2,16 +2,28 @@
 
 @section('content')
 <div class="row">
+    <div>
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
     <div class="card">
         <div class="card-header">
-            <div>
-                @if (session()->has('message'))
-                    <div class="alert alert-success">
-                        {{ session('message') }}
-                    </div>
-                @endif
+        <form method="GET" action="{{ route('users.index') }}">
+        <div class="float-start">
+            <div class="input-group">
+                <input type="search" name="search" class="form-control rounded" 
+                placeholder="Search" aria-label="Search"
+                    aria-describedby="search-addon" />
+                <button type="submit" class="btn btn-outline-primary">search</button>
             </div>
-            <a href="{{ route('users.create') }}" class="float-end">Create User</a>
+        </form>
+            </div>
+                <div class="float-end">
+                <a href="{{ route('users.create') }}">Create User</a>
+            </div>
         </div>
         <div class="card-body">
             <h4 class="card-title">User List</h4>
