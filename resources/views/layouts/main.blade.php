@@ -278,11 +278,12 @@
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
                             <i class="dripicons-mail"></i>
                             <span> System Management </span>
-                        </a>
+                        </a> 
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="email-inbox.html">Country</a></li>
-                            <li><a href="email-read.html">City</a></li>
-                            <li><a href="email-compose.html">State</a></li>
+                            <li><a href="{{ route('countries.index')}}">Country</a></li>
+                            <li><a href="{{ route('states.index')}}">State</a></li>
+                            <li><a href="#">City</a></li>
+                            
                             <li><a href="email-compose.html">Department</a></li>
                         </ul>
                     </li>
