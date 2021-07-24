@@ -25,11 +25,11 @@
 <body data-sidebar="dark">
 
 <!-- Loader -->
-{{-- <div id="preloader">
+ <!-- <div id="preloader">
     <div id="status">
         <div class="spinner"></div>
     </div>
-</div> --}}
+</div>  -->
 
 <!-- Begin page -->
 <div id="layout-wrapper">
@@ -282,7 +282,7 @@
                         <ul class="sub-menu" aria-expanded="false">
                             <li><a href="{{ route('countries.index')}}">Country</a></li>
                             <li><a href="{{ route('states.index')}}">State</a></li>
-                            <li><a href="#">City</a></li>
+                            <li><a href="{{ route('cities.index')}}">City</a></li>
                             
                             <li><a href="email-compose.html">Department</a></li>
                         </ul>
