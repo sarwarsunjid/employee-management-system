@@ -284,7 +284,7 @@
                             <li><a href="{{ route('states.index')}}">State</a></li>
                             <li><a href="{{ route('cities.index')}}">City</a></li>
                             
-                            <li><a href="email-compose.html">Department</a></li>
+                            <li><a href="{{ route('departments.index')}}">Department</a></li>
                         </ul>
                     </li>
 
