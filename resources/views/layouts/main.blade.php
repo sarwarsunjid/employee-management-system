@@ -268,9 +268,9 @@
                     <li class="menu-title">Extras</li>
 
                     <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <i class="dripicons-suitcase"></i>
-                            <span> Employee Management </span>
+                        <a href="/employees" class="waves-effect">
+                            <i class="dripicons-device-desktop"></i>
+                            <span>Employee Management</span>
                         </a>
                     </li>
 

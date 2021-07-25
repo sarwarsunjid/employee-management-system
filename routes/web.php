@@ -40,3 +40,7 @@ Route::resource('cities', CityController::class);
 
 
 Route::resource('departments', DepartmentController::class);
+
+Route::get('{any}', function () {
+    return view('employees.index');
+})->where('any', '.*');
