@@ -1,14 +1,18 @@
-require('./bootstrap');
+require("./bootstrap");
 
-window.Vue = require('vue').default;
+
+window.Vue = require("vue").default;
 import Vue from "vue";
 import VueRouter from "vue-router";
-import {routes} from "./routes";
+import { routes } from "./routes";
+
 
 Vue.use(VueRouter);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+Vue.component(
+    "employees-index",
+    require("./components/employees/Index.vue").default
+);
 
 const router = new VueRouter({
     mode: "history",
