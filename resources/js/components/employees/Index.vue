@@ -23,8 +23,8 @@
                 </div>
             </form>
             <div class="float-end">
-                <router-link :to="{name: ''}"></router-link>
-                <a href="">Create Country</a>
+                <router-link :to="{ name: 'EmployeesCreate' }">Create Employee</router-link>
+                <!-- <a href="">Create Country</a> -->
             </div>
             </div>
                 
