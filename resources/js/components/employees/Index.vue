@@ -22,10 +22,12 @@
                 </div>
                 </div>
             </form>
-            </div>
-                <div class="float-end">
+            <div class="float-end">
+                <router-link :to="{name: ''}"></router-link>
                 <a href="">Create Country</a>
             </div>
+            </div>
+                
         </div>
         <div class="card-body">
             <h4 class="card-title">User List</h4>
