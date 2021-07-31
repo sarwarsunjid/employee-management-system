@@ -10,7 +10,7 @@
         <div class="card-body">
             <h4 class="card-title">Create Employees</h4>
                 <form>
-                    <div class="form-group row">
+                    <div class="form-group row mt-2">
                         <label for="first_name" class="col-md-4 col-form-label text-md-right">First Name</label>
 
                         <div class="col-md-6">
@@ -19,7 +19,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row mt-2">
                         <label for="middle_name" class="col-md-4 col-form-label text-md-right">Middle Name</label>
 
                         <div class="col-md-6">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row mt-2">
                         <label for="last_name" class="col-md-4 col-form-label text-md-right">Last Name</label>
 
                         <div class="col-md-6">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row mt-2">
                         <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
 
                         <div class="col-md-6">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row mt-2">
                         <label for="country"
                             class="col-md-4 col-form-label text-md-right">Country</label>
 
@@ -61,7 +61,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row mt-2">
                         <label for="state"
                             class="col-md-4 col-form-label text-md-right">State</label>
 
@@ -76,7 +76,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row mt-2">
                         <label for="department"
                             class="col-md-4 col-form-label text-md-right">Department</label>
 
@@ -91,7 +91,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row mt-2">
                         <label for="city"
                             class="col-md-4 col-form-label text-md-right">city</label>
 
@@ -106,7 +106,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row mt-2">
                         <label for="zip_code" class="col-md-4 col-form-label text-md-right">Zip Code</label>
 
                         <div class="col-md-6">
@@ -115,7 +115,25 @@
                         </div>
                     </div>
 
-                    <div class="form-group row mb-0">
+                    <div class="form-group row mt-2">
+                        <label for="zip_code" class="col-md-4 col-form-label text-md-right">Birth Date</label>
+
+                        <div class="col-md-6">
+                            <datepicker input-class="form-control"></datepicker>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-2">
+                        <label for="zip_code" class="col-md-4 col-form-label text-md-right">Date Hired</label>
+
+                        <div class="col-md-6">
+                            <datepicker input-class="form-control"></datepicker>
+                        </div>
+                    </div>
+                    
+                    
+
+                    <div class="form-group row mb-0 mt-4">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary">
                                 Create
@@ -133,11 +151,35 @@
 </template>
 
 <script>
-export default {
+import Datepicker from "vuejs-datepicker";
 
-}
+export default {
+    components: {
+        Datepicker
+    },
+    data() {
+        return {
+            countries: [],
+            states: [],
+            departments: [],
+            cities: []
+        }
+    },
+    created() {
+        this.getCountries();
+    },
+    methods: {
+        getCountries() {
+            axios.get('/api/employees/countries')
+                .then(res => {
+                    this.countries = res.data
+                })
+                .catch(error => {
+                    console.log(console.error)
+                })
+        }
+    }
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

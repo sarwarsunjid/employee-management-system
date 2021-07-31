@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 
 window.Vue = require("vue").default;
+
 import Vue from "vue";
 import VueRouter from "vue-router";
 import { routes } from "./routes";
