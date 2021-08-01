@@ -170,7 +170,7 @@ export default {
     },
     methods: {
         getCountries() {
-            axios.get('/api/employees/countries')
+            axios.get("/api/employees/countries")
                 .then(res => {
                     this.countries = res.data
                 })
