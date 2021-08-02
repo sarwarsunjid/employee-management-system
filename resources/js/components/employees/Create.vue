@@ -49,32 +49,51 @@
                     <div class="form-group row mt-2">
                         <label for="country"
                             class="col-md-4 col-form-label text-md-right">Country</label>
+                            
 
                         <div class="col-md-6">
-                            <select name="country" class="form-control" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        
-                                            <option value=""></option>
+                            <select
+                                v-model="form.country_id"
+                                @change="getStates()"
+                                name="country"
+                                class="form-control"
+                                aria-label="Default select example"
+                            >
+                            <option
+                                v-for="country in countries"
+                                :key="country.id"
+                                :value="country.id"
+                                >{{ country.name }}</option
+                            >
                                         
                                     </select>
                                     
                         </div>
                     </div>
 
-                    <div class="form-group row mt-2">
+                    <!-- <div class="form-group row mt-2">
                         <label for="state"
                             class="col-md-4 col-form-label text-md-right">State</label>
 
                         <div class="col-md-6">
-                            <select name="state" class="form-control" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        
-                                            <option value=""></option>
+                            <select
+                                v-model="form.country_id"
+                                @change="getStates()"
+                                name="country"
+                                class="form-control"
+                                aria-label="Default select example"
+                            >
+                            <option
+                                v-for="country in countries"
+                                :key="country.id"
+                                :value="country.id"
+                                >{{ country.name }}</option
+                            >
                                         
                                     </select>
                                     
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group row mt-2">
                         <label for="department"
@@ -162,8 +181,21 @@ export default {
             countries: [],
             states: [],
             departments: [],
-            cities: []
-        }
+            cities: [],
+            form: {
+                first_name: "",
+                last_name: "",
+                middle_name: "",
+                address: "",
+                country_id: "",
+                state_id: "",
+                department_id: "",
+                city_id: "",
+                zip_code: "",
+                birthdate: null,
+                date_hired: null
+            }
+        };
     },
     created() {
         this.getCountries();
@@ -172,11 +204,21 @@ export default {
         getCountries() {
             axios.get("/api/employees/countries")
                 .then(res => {
-                    this.countries = res.data
+                    this.countries = res.data;
                 })
                 .catch(error => {
-                    console.log(console.error)
+                    console.log(console.error);
                 })
+        },
+        getStates() {
+            axios
+                .get("/api/employees/" + this.form.country_id + "/states")
+                .then(res => {
+                    this.states = res.data;
+                })
+                .catch(error => {
+                    console.log(console.error);
+                });
         }
     }
 };
