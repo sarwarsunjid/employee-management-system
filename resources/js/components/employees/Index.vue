@@ -37,17 +37,22 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Country Code</th>
-                            <th>Name</th>
-                            <th>Manage</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Address</th>
+                            <th>Address</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
-                            <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td></td>
+                            <tr
+                                v-for="employee in employees"
+                                :key="employee.id"
+                            >
+                                <th scope="row">#{{ employee.id }}</th>
+                                <td>{{ employee.first_name }}</td>
+                                <td>{{ employee.last_name }}</td>
+                                <td>{{ employee.address }}</td>
+                                <td>{{ employee.department.name }}</td>
                                 <td>
                                     <a href="" class="btn btn-success">Edit</a>
                                 </td>
@@ -65,8 +70,30 @@
 
 <script>
 export default {
+    data() {
+        return {
+            employees: []
+        }
+    },
+    created() {
+        this.getEmployees();
+    },
+    methods: {
+        getEmployees() {
+            axios
+                .get("/api/employees")
+                .then(res => {
+                    this.employees = res.data.data
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
 
-}
+    }
+};
+
+
 </script>
 
 <style>
