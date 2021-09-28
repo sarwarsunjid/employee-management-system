@@ -54,7 +54,20 @@
                                 <td>{{ employee.address }}</td>
                                 <td>{{ employee.department.name }}</td>
                                 <td>
-                                    <a href="" class="btn btn-success">Edit</a>
+                                    <router-link
+                                        :to="{
+                                            name: 'EmployeesEdit',
+                                            params: { id: employee.id }
+                                        }"
+                                        class="btn btn-success"
+                                        >Edit</router-link
+                                    >
+                                    <button
+                                        class="btn btn-danger"
+                                        @click="deleteEmployee(employee.id)"
+                                    >
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                        
@@ -88,8 +101,14 @@ export default {
                 .catch(error => {
                     console.log(error)
                 })
+        },
+        deleteEmployee(id) {
+            axios.delete("api/employees/" + id).then(res => {
+                this.showMessage = true;
+                this.message = res.data;
+                this.getEmployees();
+            });
         }
-
     }
 };
 
