@@ -4,11 +4,11 @@
 
 
 <div class="row">
-    <div>
-
-            <div class="alert alert-success">
+    <div class="card  mx-auto">
+        <div v-if="showMessage">
+            <div class="alert alert-success"> {{ message }}
             </div>
-
+        </div>
     </div>
     <div class="card">
         <div class="card-header">
@@ -85,7 +85,9 @@
 export default {
     data() {
         return {
-            employees: []
+            employees: [],
+            showMessage: false,
+            message: ''
         }
     },
     created() {
