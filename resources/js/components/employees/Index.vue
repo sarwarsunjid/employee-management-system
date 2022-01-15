@@ -15,16 +15,31 @@
             <form >
                 <div class="float-start">
                     <div class="input-group">
-                        <input type="search" name="search" class="form-control rounded" 
+                        <input type="search" v-model.lazy="search" class="form-control rounded" 
                         placeholder="Search" aria-label="Search"
                             aria-describedby="search-addon" >
                         <button type="submit" class="btn btn-outline-primary">search</button>   
                 </div>
                 </div>
+                
+                                        
+                                    
             </form>
             <div class="float-end">
                 <router-link :to="{ name: 'EmployeesCreate' }">Create Employee</router-link>
-                <!-- <a href="">Create Country</a> -->
+                <select
+                                            v-model="selectedDeprtment"
+                                            name="city"
+                                            class="form-control"
+                                            aria-label="Default select example"
+                                        >
+                                            <option
+                                                v-for="department in departments"
+                                                :key="department.id"
+                                                :value="department.id"
+                                                >{{ department.name }}</option
+                                            >
+                                        </select>
             </div>
             </div>
                 
@@ -87,22 +102,49 @@ export default {
         return {
             employees: [],
             showMessage: false,
-            message: ''
+            message: "",
+            search: null,
+            selectedDeprtment: null,
+            departments: []
+        };
+    },
+    watch: {
+        search() {
+            this.getEmployees();
+        },
+        selectedDeprtment() {
+            this.getEmployees();
         }
     },
     created() {
         this.getEmployees();
+        this.getDepartments();
     },
     methods: {
         getEmployees() {
             axios
-                .get("/api/employees")
+                .get("/api/employees", {
+                    params: {
+                        search: this.search,
+                        department_id: this.selectedDeprtment
+                    }
+                })
                 .then(res => {
-                    this.employees = res.data.data
+                    this.employees = res.data.data;
                 })
                 .catch(error => {
-                    console.log(error)
+                    console.log(error);
+                });
+        },
+        getDepartments() {
+            axios
+                .get("/api/employees/departments")
+                .then(res => {
+                    this.departments = res.data;
                 })
+                .catch(error => {
+                    console.log(console.error);
+                });
         },
         deleteEmployee(id) {
             axios.delete("api/employees/" + id).then(res => {
